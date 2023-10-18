@@ -55,5 +55,3 @@ Required:
 Optional:
 
 - `timestamp` (String) The creation timestamp for the Keytab entry in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8) format. Defaults to the current time, but may be set to a specific time for better reproducibility.
-
-
