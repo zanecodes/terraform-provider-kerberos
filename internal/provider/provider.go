@@ -40,7 +40,9 @@ func (p *KerberosProvider) Resources(ctx context.Context) []func() resource.Reso
 }
 
 func (p *KerberosProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
-	return nil
+	return []func() datasource.DataSource{
+		NewTokenDataSource,
+	}
 }
 
 func New(version string) func() provider.Provider {
