@@ -6,7 +6,7 @@ import (
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
-	"github.com/zanecodes/terraform-provider-keytab/internal/provider"
+	"github.com/zanecodes/terraform-provider-kerberos/internal/provider"
 )
 
 // Run "go generate" to format example terraform files and generate the docs for the registry/website
@@ -35,7 +35,7 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/zanecodes/keytab",
+		Address: "registry.terraform.io/zanecodes/kerberos",
 		Debug:   debug,
 	}
 
