@@ -1,0 +1,13 @@
+services:
+  samba:
+    image: nowsci/samba-domain
+    privileged: true
+    environment:
+      DOMAIN: TEST.LAN
+      DOMAIN_DC: dc=test,dc=lan
+      DOMAIN_EMAIL: test.lan
+      DOMAINPASS: 'Test1234!'
+    ports:
+      - 1088:88
+    healthcheck:
+      test: ["CMD", "samba-tool", "spn", "add", "HTTP/test.lan", "Administrator"]
