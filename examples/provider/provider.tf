@@ -1,1 +1,1 @@
-provider "keytab" {}
+provider "kerberos" {}

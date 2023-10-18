@@ -1,4 +1,4 @@
-module github.com/zanecodes/terraform-provider-keytab
+module github.com/zanecodes/terraform-provider-kerberos
 
 go 1.18
 

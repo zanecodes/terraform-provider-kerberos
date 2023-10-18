@@ -1,6 +1,6 @@
-# Terraform Provider: Keytab
+# Terraform Provider: Kerberos
 
-Terraform Provider for Kerberos keytab resources.
+Terraform Provider for Kerberos resources.
 
 ## Requirements
 
@@ -38,8 +38,8 @@ Install the provider by adding it to the `required_provider` block of your `terr
 ```hcl
 terraform {
   required_providers {
-    keytab = {
-      source = "zanecodes/keytab"
+    kerberos = {
+      source = "zanecodes/kerberos"
       version = "~> 0.1"
     }
   }

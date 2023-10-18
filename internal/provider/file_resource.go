@@ -20,7 +20,7 @@ import (
 	"github.com/jcmturner/gokrb5/v8/iana/etypeID"
 	"github.com/jcmturner/gokrb5/v8/keytab"
 
-	"github.com/zanecodes/terraform-provider-keytab/internal/validators/timevalidator"
+	"github.com/zanecodes/terraform-provider-kerberos/internal/validators/timevalidator"
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.

@@ -1,11 +1,11 @@
 ---
-page_title: "Provider: Keytab"
+page_title: "Provider: Kerberos"
 description: |-
-  The keytab provider is used to interact with Kerberos keytab resources.
+  The kerberos provider is used to interact with Kerberos resources.
 ---
 
-# Keytab Provider
+# Kerberos Provider
 
-The keytab provider is used to interact with Kerberos keytab resources using the [gokrb5](https://github.com/jcmturner/gokrb5) library. The provider itself has no configuration options.
+The kerberos provider is used to interact with Kerberos resources using the [gokrb5](https://github.com/jcmturner/gokrb5) library. The provider itself has no configuration options.
 
 Use the navigation to the left to read about the available resources.

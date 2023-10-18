@@ -37,7 +37,7 @@ func TestAccFileResource(t *testing.T) {
 			// Create and Read testing
 			{
 				Config: `
-resource "keytab_file" "test" {
+resource "kerberos_file" "test" {
   entry {
     principal = "principal"
     realm = "realm.com"
@@ -54,14 +54,14 @@ resource "keytab_file" "test" {
 					}
 				},
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttrSet("keytab_file.test", "id"),
-					resource.TestCheckResourceAttrWith("keytab_file.test", "content_base64", testAccCheckKeytabContent(t, first_keytab)),
+					resource.TestCheckResourceAttrSet("kerberos_file.test", "id"),
+					resource.TestCheckResourceAttrWith("kerberos_file.test", "content_base64", testAccCheckKeytabContent(t, first_keytab)),
 				),
 			},
 			// Update and Read testing
 			{
 				Config: `
-resource "keytab_file" "test" {
+resource "kerberos_file" "test" {
   entry {
     principal = "principal"
     realm = "realm.com"
@@ -73,12 +73,12 @@ resource "keytab_file" "test" {
 }
 `,
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttrWith("keytab_file.test", "content_base64", testAccCheckKeytabContent(t, second_keytab)),
+					resource.TestCheckResourceAttrWith("kerberos_file.test", "content_base64", testAccCheckKeytabContent(t, second_keytab)),
 				),
 			},
 			{
 				Config: `
-resource "keytab_file" "test" {
+resource "kerberos_file" "test" {
   entry {
     principal = "principal"
     realm = "realm.com"
@@ -98,7 +98,7 @@ resource "keytab_file" "test" {
 }
 `,
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttrWith("keytab_file.test", "content_base64", testAccCheckKeytabContent(t, third_keytab)),
+					resource.TestCheckResourceAttrWith("kerberos_file.test", "content_base64", testAccCheckKeytabContent(t, third_keytab)),
 				),
 			},
 			// Delete testing automatically occurs in TestCase

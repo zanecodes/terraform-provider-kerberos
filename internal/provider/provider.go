@@ -8,44 +8,44 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 )
 
-// Ensure KeytabProvider satisfies various provider interfaces.
-var _ provider.Provider = &KeytabProvider{}
+// Ensure KerberosProvider satisfies various provider interfaces.
+var _ provider.Provider = &KerberosProvider{}
 
-// KeytabProvider defines the provider implementation.
-type KeytabProvider struct {
+// KerberosProvider defines the provider implementation.
+type KerberosProvider struct {
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing.
 	version string
 }
 
-// KeytabProviderModel describes the provider data model.
-type KeytabProviderModel struct{}
+// KerberosProviderModel describes the provider data model.
+type KerberosProviderModel struct{}
 
-func (p *KeytabProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "keytab"
+func (p *KerberosProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
+	resp.TypeName = "kerberos"
 	resp.Version = p.version
 }
 
-func (p *KeytabProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
+func (p *KerberosProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
 }
 
-func (p *KeytabProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
+func (p *KerberosProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 }
 
-func (p *KeytabProvider) Resources(ctx context.Context) []func() resource.Resource {
+func (p *KerberosProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		NewFileResource,
 	}
 }
 
-func (p *KeytabProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
+func (p *KerberosProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return nil
 }
 
 func New(version string) func() provider.Provider {
 	return func() provider.Provider {
-		return &KeytabProvider{
+		return &KerberosProvider{
 			version: version,
 		}
 	}
