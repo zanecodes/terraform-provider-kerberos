@@ -11,7 +11,7 @@ import (
 	"github.com/jcmturner/gokrb5/v8/keytab"
 )
 
-func TestAccFileResource(t *testing.T) {
+func TestAccKeytabResource(t *testing.T) {
 	first_keytab := keytab.New()
 
 	second_keytab := keytab.New()
@@ -37,7 +37,7 @@ func TestAccFileResource(t *testing.T) {
 			// Create and Read testing
 			{
 				Config: `
-resource "kerberos_file" "test" {
+resource "kerberos_keytab" "test" {
   entry {
     principal = "principal"
     realm = "realm.com"
@@ -54,14 +54,14 @@ resource "kerberos_file" "test" {
 					}
 				},
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttrSet("kerberos_file.test", "id"),
-					resource.TestCheckResourceAttrWith("kerberos_file.test", "content_base64", testAccCheckKeytabContent(t, first_keytab)),
+					resource.TestCheckResourceAttrSet("kerberos_keytab.test", "id"),
+					resource.TestCheckResourceAttrWith("kerberos_keytab.test", "content_base64", testAccCheckKeytabContent(t, first_keytab)),
 				),
 			},
 			// Update and Read testing
 			{
 				Config: `
-resource "kerberos_file" "test" {
+resource "kerberos_keytab" "test" {
   entry {
     principal = "principal"
     realm = "realm.com"
@@ -73,12 +73,12 @@ resource "kerberos_file" "test" {
 }
 `,
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttrWith("kerberos_file.test", "content_base64", testAccCheckKeytabContent(t, second_keytab)),
+					resource.TestCheckResourceAttrWith("kerberos_keytab.test", "content_base64", testAccCheckKeytabContent(t, second_keytab)),
 				),
 			},
 			{
 				Config: `
-resource "kerberos_file" "test" {
+resource "kerberos_keytab" "test" {
   entry {
     principal = "principal"
     realm = "realm.com"
@@ -98,7 +98,7 @@ resource "kerberos_file" "test" {
 }
 `,
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttrWith("kerberos_file.test", "content_base64", testAccCheckKeytabContent(t, third_keytab)),
+					resource.TestCheckResourceAttrWith("kerberos_keytab.test", "content_base64", testAccCheckKeytabContent(t, third_keytab)),
 				),
 			},
 			// Delete testing automatically occurs in TestCase

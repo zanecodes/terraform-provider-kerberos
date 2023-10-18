@@ -1,4 +1,4 @@
-resource "kerberos_file" "example" {
+resource "kerberos_keytab" "example" {
   entry {
     principal       = "example"
     realm           = "example.com"
@@ -10,5 +10,5 @@ resource "kerberos_file" "example" {
 
 output "keytab" {
   sensitive = true
-  value     = kerberos_file.example.content_base64
+  value     = kerberos_keytab.example.content_base64
 }

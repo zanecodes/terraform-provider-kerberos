@@ -24,24 +24,24 @@ import (
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
-var _ resource.Resource = &FileResource{}
+var _ resource.Resource = &KeytabResource{}
 
-func NewFileResource() resource.Resource {
-	return &FileResource{}
+func NewKeytabResource() resource.Resource {
+	return &KeytabResource{}
 }
 
-// FileResource defines the resource implementation.
-type FileResource struct {
+// KeytabResource defines the resource implementation.
+type KeytabResource struct {
 }
 
-// FileResourceModel describes the resource data model.
-type FileResourceModel struct {
-	Entries       []FileEntryModel `tfsdk:"entry"`
-	ContentBase64 types.String     `tfsdk:"content_base64"`
-	Id            types.String     `tfsdk:"id"`
+// KeytabResourceModel describes the resource data model.
+type KeytabResourceModel struct {
+	Entries       []KeytabEntryModel `tfsdk:"entry"`
+	ContentBase64 types.String       `tfsdk:"content_base64"`
+	Id            types.String       `tfsdk:"id"`
 }
 
-type FileEntryModel struct {
+type KeytabEntryModel struct {
 	Principal      types.String `tfsdk:"principal"`
 	Realm          types.String `tfsdk:"realm"`
 	Key            types.String `tfsdk:"key"`
@@ -50,11 +50,11 @@ type FileEntryModel struct {
 	Timestamp      types.String `tfsdk:"timestamp"`
 }
 
-func (r *FileResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_file"
+func (r *KeytabResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_keytab"
 }
 
-func (r *FileResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (r *KeytabResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	supported_etypes := make([]string, 0)
 
 	for k := range etypeID.ETypesByName {
@@ -129,11 +129,11 @@ func (r *FileResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 	}
 }
 
-func (r *FileResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
+func (r *KeytabResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
 }
 
-func (r *FileResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
-	var data *FileResourceModel
+func (r *KeytabResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
+	var data *KeytabResourceModel
 
 	now := time.Now()
 
@@ -188,8 +188,8 @@ func (r *FileResource) Create(ctx context.Context, req resource.CreateRequest, r
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *FileResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
-	var data *FileResourceModel
+func (r *KeytabResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
+	var data *KeytabResourceModel
 
 	// Read Terraform prior state data into the model
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
@@ -202,8 +202,8 @@ func (r *FileResource) Read(ctx context.Context, req resource.ReadRequest, resp 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *FileResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var data *FileResourceModel
+func (r *KeytabResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
+	var data *KeytabResourceModel
 
 	// Read Terraform plan data into the model
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
@@ -216,8 +216,8 @@ func (r *FileResource) Update(ctx context.Context, req resource.UpdateRequest, r
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *FileResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	var data *FileResourceModel
+func (r *KeytabResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+	var data *KeytabResourceModel
 
 	// Read Terraform prior state data into the model
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
